@@ -10,9 +10,11 @@ class BookViewSet(viewsets.ModelViewSet):
     serializer_class = BookSerializer
     
     def list(self, request, *args, **kwargs):
+        
         print('BookViewSet called!')
         try:
             queryset = self.get_queryset()
+            print(queryset)
         except Book.DoesNotExist:
             return Response({'error': 'Book not found'}, status=status.HTTP_404_NOT_FOUND)
         
