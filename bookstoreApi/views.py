@@ -26,6 +26,7 @@ class CreateBookViewSet(viewsets.ModelViewSet):
     serializer_class = BookSerializer
     
     def create(self, request, *args, **kwargs):
+        print(request.data)
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         
@@ -43,7 +44,7 @@ class UpdateBookViewSet(viewsets.ModelViewSet):
     
     def put(self, request, *args, **kwargs):
         partial = kwargs.pop('partial', False)
-        
+        print(request.data)
         try:
             instance = self.get_object()
         except Book.DoesNotExist:
